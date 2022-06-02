@@ -1,0 +1,11 @@
+.contributor-avatar {
+    display: inline-block;
+    position: relative;
+
+    .icon{
+        left: 50%;
+        position: absolute;
+        bottom: 0;
+        transform: translate3d(-50%, 20%, 0);
+    }
+}

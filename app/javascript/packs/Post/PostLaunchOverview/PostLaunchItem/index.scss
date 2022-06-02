@@ -1,0 +1,25 @@
+@import '../../../../components/variables.scss';
+
+.post-launch-item {
+    display: flex;
+    flex-direction: column;
+    min-height: 90px;
+    align-items: center;
+    justify-content: center;
+    flex: 2;
+    border-right: 1px solid map-get($map: $colors, $key: "spacer");
+
+    .post-launch-item-wrapper {
+        text-align: center;
+    }
+    &:first-child {
+        align-items: flex-start;
+        flex: 1.5;
+    }
+
+    &:last-child {
+        align-items: flex-end;
+        border-right: none;
+        flex: 1.5;
+    }
+}

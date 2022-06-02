@@ -1,0 +1,20 @@
+@import '../../../../components/variables.scss';
+
+#comment-form {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid map-get($colors, "spacer");
+    border-bottom: 1px solid map-get($colors, "spacer");
+
+    input {
+        border: none;
+        padding: 10px;
+        outline: none;
+        flex: 1;
+    }
+    .button-comment {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}

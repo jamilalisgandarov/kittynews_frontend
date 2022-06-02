@@ -1,0 +1,19 @@
+@import '../../../components/variables.scss';
+
+#trending-launches {
+    .trending-launches-list {
+        display: flex;
+        margin-top: 30px;
+
+        &>div {
+            flex: 1;
+            padding: 15px;
+            border-left: 1px solid map-get($map: $colors, $key: 'spacer');
+
+            &:first-child {
+                padding-left: 0;
+                border-left: none;
+            }
+        }
+    }
+}
