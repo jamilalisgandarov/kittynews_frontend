@@ -50,7 +50,7 @@ function PostsShow({ postId }) {
       }
     });
 
-    if(res.data?.commentCreate.errors.length === 0){
+    if(res.data?.commentCreate.errors.length === 0 && !res.errors){
       refetch();
     }
 
