@@ -6,3 +6,8 @@ export interface Comment {
     text?: string;
     user?: User;
 }
+
+export interface CommentCreatePayload {
+    comment: Comment;
+    errors: string[];
+}
