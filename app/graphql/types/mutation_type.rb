@@ -5,5 +5,6 @@ module Types
     field :user_update, mutation: Mutations::UserUpdate
     field :vote_add, mutation: Mutations::VoteAdd
     field :vote_remove, mutation: Mutations::VoteRemove
+    field :comment_create, mutation: Mutations::CommentCreate
   end
 end
