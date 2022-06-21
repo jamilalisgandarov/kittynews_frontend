@@ -38,21 +38,21 @@ export const PostContributors: React.FC<IProps> = ({
           {makers.map((user) => (
             <ContributorUserAvatar
               user={user}
-              key={user.id}
+              key={`m-${user.id}`}
               contributionType="MAKER"
             />
           ))}
           {commenters.map((user) => (
             <ContributorUserAvatar
               user={user}
-              key={user.id}
+              key={`c-${user.id}`}
               contributionType="COMMENTER"
             />
           ))}
           {voters.map((user) => (
             <ContributorUserAvatar
               user={user}
-              key={user.id}
+              key={`v-${user.id}`}
               contributionType="VOTER"
             />
           ))}
