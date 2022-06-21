@@ -13,6 +13,8 @@ import { voteAddMutation } from "../graphql/mutations/votePost";
 import { voteRemoveMutation } from "../graphql/mutations/unvotePost";
 import { NetworkStatus } from "apollo-client";
 import { useViewer } from "../hooks/useViewer";
+import { addCommentMutation } from "../graphql/mutations/addComment";
+import { CommentCreatePayload } from "../models/Comment";
 
 function PostsShow({ postId }) {
   const {isLoggedIn} = useViewer();
@@ -25,6 +27,7 @@ function PostsShow({ postId }) {
   });
   const [voteAdd] = useMutation(voteAddMutation);
   const [voteRemove] = useMutation(voteRemoveMutation);
+  const [addComment] = useMutation<{commentCreate:CommentCreatePayload},{postId: string, text: string}>(addCommentMutation);
 
   const handleVote = React.useCallback(async () => {
     if (isLoggedIn) {
@@ -39,6 +42,29 @@ function PostsShow({ postId }) {
       window.location.href = "/users/sign_in";
     }
   }, [postId, data, refetch, voteRemove, voteAdd, isLoggedIn]);
+  const handleCommentAdded = React.useCallback(async (text: string) => {
+    const res = await addComment({
+      variables: {
+        postId,
+        text,
+      }
+    });
+
+    if(res.data?.commentCreate.errors.length === 0){
+      refetch();
+    }
+
+    return res.data?.commentCreate;
+  },[postId, refetch]);
+  const uniqueCommenters = React.useMemo(()=>{
+    return data?.post?.commenters.reduce((acc,commenter)=>{
+      if(!acc.find((user)=>commenter.id !== user.id)){
+        acc.push(commenter);
+      }
+
+      return acc;
+    },[]) || [];
+  },[data]);
 
   return (
     <div id="post">
@@ -53,7 +79,7 @@ function PostsShow({ postId }) {
           isVoted={data?.post.isVoted}
         />
         <PostContributors
-          commenters={data?.post.commenters || []}
+          commenters={uniqueCommenters}
           makers={data?.post.makers || []}
           voters={[]}
           hunter={data?.post.user}
@@ -62,6 +88,7 @@ function PostsShow({ postId }) {
         <PostComments
           isLoading={loading}
           comments={data?.post.comments || []}
+          onCommentAdded={handleCommentAdded}
         />
         <PostLaunchOverview
           commentCount={data?.post.commentsCount}
