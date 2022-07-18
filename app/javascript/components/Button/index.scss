@@ -1,0 +1,49 @@
+@import '../variables.scss';
+@use "sass:color";
+
+.button {
+    padding: 17px;
+    font-size: 12px;
+    font-weight: normal;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+
+
+    &.contained {
+       &.primary {
+            background-color: map-get($map: $colors, $key: 'primary');
+            color: map-get($map: $colors, $key: 'white');
+            border-color: map-get($map: $colors, $key: 'primary');
+
+            &:not([disabled]):hover {
+                background-color: darken(map-get($map: $colors, $key: 'primary'), 10%);
+                border-color: darken(map-get($map: $colors, $key: 'primary'), 10%);
+            }
+       }
+    }
+
+    &[disabled] {
+        cursor: initial;
+    }
+
+    &.outlined {
+        &.secondary {
+            background-color: map-get($map: $colors, $key: 'white');
+            color: map-get($map: $colors, $key: 'black');
+            border-color: map-get($map: $colors, $key: 'spacer');
+
+            &:hover {
+                background-color: darken(map-get($map: $colors, $key: 'white'), 10%);
+            }
+        }
+    }
+
+    .prefix {
+        margin-right: 1ch;
+    }
+
+    .postfix {
+        margin-left: 1ch;
+    }
+}

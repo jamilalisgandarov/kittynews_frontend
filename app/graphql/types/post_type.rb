@@ -10,7 +10,7 @@ module Types
     field :is_voted, resolver: Resolvers::IsVotedResolver
     field :can_be_voted, Boolean, null: false
     field :description, String, null: false
-    field :views_count, Int, null: false
+    field :view_count, Int, null: false
     field :daily_feed_position, Int, null: false
     field :weekly_feed_position, Int, null: false
 

@@ -1,0 +1,43 @@
+#post-header {
+    .title {
+        color: #282D3E;
+        margin-top: 20px;
+    }
+    
+    .logo {
+        width: 54px;
+        height: 54px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            border-radius: 4px;
+        }
+    }
+
+    .overview {
+        margin-top: 15px;
+        display: flex;
+    
+        .tagLine {
+            font-weight: 300 !important;
+            margin: 0;
+            max-width: 60%;
+        }
+        .actions {
+            display: flex;
+            margin-left: auto;
+            column-gap: 6px;
+            height: fit-content;
+
+            .upvote {
+                min-width: 160px;
+            }
+        }
+    }
+
+    .description {
+        margin-top: 30px;
+    }
+}

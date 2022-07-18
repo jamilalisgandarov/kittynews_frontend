@@ -1,0 +1,13 @@
+.post-comment {
+    margin: 20px 0;
+
+    .post-comment-header {
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+    }
+    .post-comment-content {
+        padding-left: 35px;
+        margin-top: 5px;
+    }
+}
